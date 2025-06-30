@@ -1,13 +1,17 @@
+from server.extensions import ma
+from server.models.user import User  # Make sure this path is correct
 from marshmallow import fields
 
-from server.extensions import ma
 
+class UserSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = User
+        load_instance = True
+        include_fk = True  # If you have foreign keys like orders
 
-class UserSchema(ma.Schema):
-    id = fields.Int(dump_only=True)
-    username = fields.Str(required=True)
+    password = fields.String(load_only=True, required=True)
     email = fields.Email(required=True)
-    password = fields.Str(load_only=True, required=True)
-    is_admin = fields.Bool(dump_only=True)
+    is_admin = fields.Boolean(dump_only=True)
 
 user_schema = UserSchema()
+users_schema = UserSchema(many=True)

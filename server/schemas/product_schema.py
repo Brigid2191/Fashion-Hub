@@ -5,15 +5,8 @@ from server.models.product import Product
 class ProductSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Product
-
-        id = ma.auto_field()
-        name = ma.auto_field()
-        price = ma.auto_field()
-        description = ma.auto_field()
-        stock = ma.auto_field()
-
         load_instance = True
+        include_fk = True  # Optional if you have foreign keys
 
 product_schema = ProductSchema()
 products_schema = ProductSchema(many=True)
-        
