@@ -15,7 +15,7 @@ def register_image_routes(app):
             params = {
                 "query": "fashion",
                 "per_page": 12,
-                "client_id": UNSPLASH_ACCESS_KEY
+                "client_id": 'unGYk1Aq4QPCkCTpNpz6uVkkazG1xKc3b_o4uUBPNKU'
             }
             response = requests.get(url, params=params)
             response.raise_for_status()
