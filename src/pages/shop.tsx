@@ -16,7 +16,7 @@ export function ShopPage() {
   const [products, setProducts] = useState<FashionProduct[]>([])
 
   useEffect(() => {
-    const API_URL = "https://fashion-hub-backend-swff.onrender.com"
+    const API_URL = "https://fashion-hub-backend-gvjf.onrender.com"
     fetch(`${API_URL}/api/fashion-images`)
       .then((res) => res.json())
       .then((data) => {
