@@ -1,4 +1,3 @@
-# server/routes/unsplash_routes.py
 import os
 import requests
 from flask import Blueprint, jsonify
@@ -7,7 +6,7 @@ unsplash_bp = Blueprint('unsplash', __name__)
 
 @unsplash_bp.route('/fashion-images', methods=['GET'])
 def get_fashion_images():
-    access_key = os.getenv('unGYk1Aq4QPCkCTpNpz6uVkkazG1xKc3b_o4uUBPNKU' )
+    access_key = os.getenv('UNSPLASH_ACCESS_KEY')
 
     if not access_key:
         return jsonify({'error': 'Missing Unsplash access key'}), 500
