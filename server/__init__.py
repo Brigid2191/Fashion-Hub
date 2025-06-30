@@ -9,20 +9,20 @@ from server.extensions import db, jwt, ma, migrate
 from server.routes.auth_routes import auth_bp
 from server.routes.order_routes import order_bp
 from server.routes.product_routes import product_bp
-from server.routes.unsplash_routes import unsplash_bp  # ✅ Import the Unsplash blueprint
+from server.routes.unsplash_routes import unsplash_bp  # ✅ Unsplash blueprint
 
 def create_app(): 
-    app = Flask(__name__) 
-
     # Load environment variables
     load_dotenv()
 
-    # Config from environment
+    app = Flask(__name__)
+
+    # Configure app
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI', 'sqlite:///db.sqlite3')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY', 'your-secret-key')
 
-    # Enable CORS to allow requests from frontend
+    # Enable CORS for frontend deployed on Vercel
     CORS(app, resources={r"/api/*": {"origins": "https://fashion-hub-mu.vercel.app"}})
 
     # Initialize extensions
@@ -35,10 +35,10 @@ def create_app():
     app.register_blueprint(auth_bp)
     app.register_blueprint(product_bp)
     app.register_blueprint(order_bp, url_prefix='/orders')
-    app.register_blueprint(unsplash_bp, url_prefix='/api')  # ✅ Register Unsplash route
+    app.register_blueprint(unsplash_bp, url_prefix='/api')  # ✅ e.g., /api/fashion-images
 
     @app.route('/')
     def home():
         return 'Welcome to Fashion Hub Backend API!'
-  
+
     return app
