@@ -1,5 +1,5 @@
 from faker import Faker
-from server.run import create_app
+from run import create_app
 from server.extensions import db  
 from server.models.product import Product
 
