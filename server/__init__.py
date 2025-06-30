@@ -1,6 +1,7 @@
 # server/__init__.py
 from flask import Flask
 from dotenv import load_dotenv
+from flask_cors import CORS
 import os
 
 from server.config import Config
@@ -20,6 +21,9 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI', 'sqlite:///db.sqlite3')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY', 'your-secret-key')
+
+    # Enable CORS to allow requests from frontend
+    CORS(app, resources={r"/api/*": {"origins": "https://fashion-hub-mu.vercel.app"}})
 
     # Initialize extensions
     db.init_app(app)

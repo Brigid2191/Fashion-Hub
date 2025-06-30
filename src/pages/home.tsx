@@ -44,7 +44,6 @@ export function HomePage() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "var(--color-grey-50)" }}>
-      {/* Hero Section */}
       <section className="hero">
         <div className="container">
           <h1 className="hero-title">Welcome to ShopApp</h1>
@@ -57,15 +56,9 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Features Section */}
       <section className="p-8">
         <div className="container">
-          <h2
-            className="text-center mb-8"
-            style={{ fontSize: "2rem", fontWeight: "700", color: "var(--color-grey-800)" }}
-          >
-            Why Choose Us?
-          </h2>
+          <h2 className="text-center mb-8 text-2xl font-bold text-gray-800">Why Choose Us?</h2>
           <div className="product-grid">
             {features.map((feature, index) => (
               <div key={index} className="card text-center">
@@ -80,13 +73,10 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="p-8" style={{ backgroundColor: "var(--color-grey-100)" }}>
+      <section className="p-8 bg-gray-100">
         <div className="container text-center">
-          <h2 className="mb-6" style={{ fontSize: "2rem", fontWeight: "700", color: "var(--color-grey-800)" }}>
-            Ready to Start Shopping?
-          </h2>
-          <p className="mb-8" style={{ fontSize: "1.125rem", color: "var(--color-grey-600)" }}>
+          <h2 className="mb-6 text-2xl font-bold text-gray-800">Ready to Start Shopping?</h2>
+          <p className="mb-8 text-lg text-gray-600">
             Join thousands of satisfied customers and discover your next favorite product today.
           </p>
           <div className="flex justify-center gap-4">

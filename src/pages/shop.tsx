@@ -16,7 +16,8 @@ export function ShopPage() {
   const [products, setProducts] = useState<FashionProduct[]>([])
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/fashion-images")
+    const API_URL = "https://fashion-hub-backend-swff.onrender.com"
+    fetch(`${API_URL}/api/fashion-images`)
       .then((res) => res.json())
       .then((data) => {
         const mapped = data.map((item: any) => ({
@@ -39,7 +40,7 @@ export function ShopPage() {
       id: product.id,
       name: product.name,
       price: product.price,
-      image: (product.image || "/placeholder.svg") as string,
+      image: product.image || "/placeholder.svg",
       category: product.category,
       description: product.description || "Fashion product",
     }
